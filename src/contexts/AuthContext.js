@@ -4,6 +4,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 
@@ -31,6 +33,11 @@ export default function AuthContextProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
+  function signInWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider);
+  }
+
   function logout() {
     return signOut(auth);
   }
@@ -39,6 +46,7 @@ export default function AuthContextProvider({ children }) {
     currentUser,
     register,
     login,
+    signInWithGoogle,
     logout,
   };
 

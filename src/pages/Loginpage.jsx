@@ -26,7 +26,7 @@ export default function Loginpage() {
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const toast = useToast();
-  const { login } = useAuth();
+  const { login, signInWithGoogle } = useAuth();
 
   return (
     <Layout>
@@ -113,7 +113,19 @@ export default function Loginpage() {
           isFullWidth
           colorScheme="red"
           leftIcon={<FaGoogle />}
-          onClick={() => alert("sign in with google")}
+          onClick={async () => {
+            try {
+              const response = await signInWithGoogle();
+              console.log(response);
+            } catch (e) {
+              toast({
+                description: e.message,
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+              });
+            }
+          }}
         >
           Sign in with Google
         </Button>
