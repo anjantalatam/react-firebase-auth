@@ -52,7 +52,7 @@ export default function Loginpage() {
             try {
               setIsSubmitting(true);
               const response = await login(email, password);
-              console.log(response);
+              // console.log(response);
               history.push(location.state?.from ?? "/profile");
             } catch (e) {
               toast({
@@ -118,7 +118,7 @@ export default function Loginpage() {
           onClick={async () => {
             try {
               const response = await signInWithGoogle();
-              console.log(response);
+              // console.log(response);
             } catch (e) {
               toast({
                 description: e.message,

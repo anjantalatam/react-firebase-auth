@@ -49,7 +49,7 @@ export default function Registerpage() {
             try {
               setIsSubmitting(true);
               const response = await register(email, password);
-              console.log(response);
+              // console.log(response);
             } catch (e) {
               toast({
                 description: e.message,
@@ -110,7 +110,7 @@ export default function Registerpage() {
           onClick={async () => {
             try {
               const response = await signInWithGoogle();
-              console.log(response);
+              // console.log(response);
             } catch (e) {
               toast({
                 description: e.message,

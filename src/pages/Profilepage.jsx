@@ -17,7 +17,11 @@ export default function Profilepage() {
       </Heading>
 
       <Container maxW="container.lg" overflowX="auto" py={4}>
-        <chakra.pre>{JSON.stringify(currentUser, null, 2)}</chakra.pre>
+        <chakra.pre>
+          Email - {currentUser.email} <br />
+          Account Status - {currentUser.emailVerified ? "Verified" : "Pending"}
+        </chakra.pre>
+        {/* <chakra.pre>{JSON.stringify(currentUser, null, 2)}</chakra.pre> */}
       </Container>
     </Layout>
   );
