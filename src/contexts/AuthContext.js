@@ -8,6 +8,7 @@ import {
   signInWithPopup,
   signOut,
   sendPasswordResetEmail,
+  confirmPasswordReset,
 } from "firebase/auth";
 
 const AuthContext = createContext();
@@ -43,6 +44,10 @@ export default function AuthContextProvider({ children }) {
     return signOut(auth);
   }
 
+  function resetPassword(oobCode, newPassword) {
+    return confirmPasswordReset(auth, oobCode, newPassword);
+  }
+
   function forgotPassword(email) {
     return sendPasswordResetEmail(auth, email, {
       url: process.env.REACT_APP_RESET_PASSWORD_DESTINATION_LINK,
@@ -56,6 +61,7 @@ export default function AuthContextProvider({ children }) {
     signInWithGoogle,
     logout,
     forgotPassword,
+    resetPassword,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
